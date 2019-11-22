@@ -1,0 +1,39 @@
+.office-card ion-card-content, ion-card-header {
+  padding: 0;
+
+  .uploaded-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+ img {
+   max-height: 60vh
+ }
+}
+
+.card-capacity-num {
+  font-weight: bold;
+}
+
+.office-card-price {
+  font-size: 0.8em !important;
+  font-weight: bold;
+}
+
+.office-card-title {
+
+  h2 {
+    margin: 0;
+  }
+
+}
+
+.card-capacity-row{
+  ion-col {
+    padding: 0 ;
+  }
+  h3 {
+    text-decoration: underline #633ce0;
+  }
+}

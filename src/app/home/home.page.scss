@@ -1,1 +1,12 @@
+ion-list {
+  background: rgba(255,255,255,0);
+}
 
+.none-available-card {
+  --background: var(--ion-color-secondary-shade) !important;
+  padding: 10px;
+
+  ion-card-title {
+      color: whitesmoke;
+  }
+}

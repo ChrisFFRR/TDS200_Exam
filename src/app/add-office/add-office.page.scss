@@ -1,0 +1,11 @@
+.image-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --background: var(--ion-color-dark-tint) !important;
+
+  ion-img {
+    margin: 0 auto;
+  }
+}
+

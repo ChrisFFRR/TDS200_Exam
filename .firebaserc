@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "office-space-3f697": {
+      "hosting": {
+        "app": [
+          "office-space-3f697"
+        ]
+      }
+    }
+  }
+}

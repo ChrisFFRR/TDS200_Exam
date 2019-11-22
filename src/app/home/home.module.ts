@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
+import {OfficeCardItemComponent} from '../components/office-card-item/office-card-item.component';
+
 
 @NgModule({
   imports: [
@@ -14,10 +16,12 @@ import { HomePage } from './home.page';
     RouterModule.forChild([
       {
         path: '',
-        component: HomePage
+        component: HomePage,
       }
     ])
   ],
-  declarations: [HomePage]
+  exports: [
+  ],
+  declarations: [ HomePage, OfficeCardItemComponent]
 })
 export class HomePageModule {}

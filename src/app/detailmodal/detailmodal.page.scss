@@ -1,0 +1,29 @@
+.modal-content {
+  --background: white;
+
+
+
+  .office-img {
+    max-height: 40vh;
+    width: 100%;
+  }
+
+  .office-img {
+    border-radius: 5px;
+  }
+  .office-address-col {
+
+    ion-row, ion-item {
+      --background: white !important;
+    }
+
+    ion-label {
+      font-size: 0.8em;
+      margin: 0;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+}
+

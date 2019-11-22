@@ -1,0 +1,33 @@
+<ion-content no-scroll>
+  <ion-grid class="grid-login">
+    <ion-row class="header-row">
+      <ion-col >
+        <img src="../../assets/office-space-logo.png" alt="logo-brand"/>
+      </ion-col>
+    </ion-row>
+    <ion-row style="height: 50%">
+      <ion-col >
+        <ion-input [(ngModel)]="user.firstname" color="danger" placeholder="First name" type="text"></ion-input>
+        <ion-input [(ngModel)]="user.surname" color="danger" placeholder="Last name" type="text"></ion-input>
+        <ion-input [(ngModel)]="user.email" color="danger" placeholder="E-mail" type="text"></ion-input>
+        <ion-input [(ngModel)]="user.password" color="danger" placeholder="Password" type="password"></ion-input>
+        <ion-item>
+          <ion-label color="danger">City</ion-label>
+          <ion-select [(ngModel)]="user.city" >
+            <ion-select-option value="Oslo">Oslo</ion-select-option>
+            <ion-select-option value="Bergen">Bergen</ion-select-option>
+            <ion-select-option value="Stavanger">Stavanger</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="btn-row">
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)="registerUser()">Register</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="warning" expand="block" routerLink="/login">Back</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

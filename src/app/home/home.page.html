@@ -1,14 +1,39 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
+<ion-header translucent>
+    <ion-toolbar>
+
+        <ion-title text-center color="tertiary">
+            Alle Møterom
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button color="danger" (click)="signOut()">Logg ut</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+<ion-content fullscreen>
+    <ion-item >
+    <ion-label>Filter</ion-label>
+    <ion-select  (ionChange)="filterList($event)">
+        <ion-select-option value="available" >Ledig</ion-select-option>
+        <ion-select-option value="booked" >Booket</ion-select-option>
+        <ion-select-option value="all" >Alle</ion-select-option>
+    </ion-select>
+    </ion-item>
+    <ion-list lines="none">
+        <ng-container *ngIf="officeList.length === 0">
+            <ion-card  class="none-available-card">
+                <ion-card-title text-center><ion-spinner color="warning" name="dots" ></ion-spinner></ion-card-title>
+            </ion-card>
+        </ng-container>
+        <ng-container *ngIf="filteredList.length === 0">
+            <ion-card class="none-available-card">
+                <ion-card-title>Ingen ledige kontorer :(</ion-card-title>
+            </ion-card>
+        </ng-container>
+        <ng-container *ngFor="let office of filteredList ">
+            <app-office-card-item [officeData]="office"></app-office-card-item>
+        </ng-container>
+    </ion-list>
 </ion-content>
+
+
