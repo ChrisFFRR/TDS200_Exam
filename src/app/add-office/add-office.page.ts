@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 
-
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {AngularFirestore} from '@angular/fire/firestore';
@@ -32,7 +31,7 @@ export class AddOfficePage implements OnInit {
         private db: AngularFirestore,
         private auth: AngularFireAuth,
         private fireStorage: AngularFireStorage,
-        public router: Router,
+        public router: Router
     ) {
 
         this.newOfficeForm = formBuilder.group({
@@ -47,26 +46,27 @@ export class AddOfficePage implements OnInit {
 
     async getGpsLoc() {
         this.isLoading = true;
-        try {
-            const geoLocCords = await this.geoLoc.getCurrentPosition();
-            // tslint:disable-next-line:max-line-length
-            const geoLocAddress = await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${geoLocCords.coords.latitude}&lon=${geoLocCords.coords.longitude}&zoom18&addressdetails=1`);
-            const geoCodeResponse = await geoLocAddress.json();
 
-            this.gpsLocation = {
-                city_district: geoCodeResponse.address.city_district,
-                house_number: geoCodeResponse.address.house_number,
-                road: geoCodeResponse.address.road,
-                city: geoCodeResponse.address.city,
-                suburb: geoCodeResponse.address.suburb,
-            };
-            this.gpsLocation.display_address = `${this.gpsLocation.road} ${this.gpsLocation.house_number} ${this.gpsLocation.city}`;
-            this.isLoading = false;
-            this.newOfficeForm.controls['address'].setValue(this.gpsLocation.display_address);
+         try {
+              const geoLocCords = await this.geoLoc.getCurrentPosition();
+              // tslint:disable-next-line:max-line-length
+              const geoLocAddress = await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${geoLocCords.coords.latitude}&lon=${geoLocCords.coords.longitude}&zoom18&addressdetails=1`);
+              const geoCodeResponse = await geoLocAddress.json();
 
-        } catch (e) {
-            console.log(e);
-        }
+              this.gpsLocation = {
+                  city_district: geoCodeResponse.address.city_district,
+                  house_number: geoCodeResponse.address.house_number,
+                  road: geoCodeResponse.address.road,
+                  city: geoCodeResponse.address.city,
+                  suburb: geoCodeResponse.address.suburb,
+              };
+              this.gpsLocation.display_address = `${this.gpsLocation.road} ${this.gpsLocation.house_number} ${this.gpsLocation.city}`;
+              this.isLoading = false;
+              this.newOfficeForm.controls['address'].setValue(this.gpsLocation.display_address);
+
+          } catch (e) {
+              console.log(e);
+          }
 
     }
 
@@ -74,7 +74,7 @@ export class AddOfficePage implements OnInit {
 
         const uploadedImgUrl = await this.uploadPicToFireStore();
         console.log(uploadedImgUrl);
-        const placeholderUrl = 'https://media.istockphoto.com/photos/modern-business-office-space-with-lobby-picture-id811843986?k=6&m=811843986&s=612x612&w=0&h=kLumP1YCUrdhZifJC66Z09aShsYroR--ap24oUtsZGw='
+        const placeholderUrl = 'https://media.istockphoto.com/photos/modern-business-office-space-with-lobby-picture-id811843986?k=6&m=811843986&s=612x612&w=0&h=kLumP1YCUrdhZifJC66Z09aShsYroR--ap24oUtsZGw=';
 
         await this.db.collection('office').add({
             name: this.newOfficeForm.value.name,
@@ -110,7 +110,7 @@ export class AddOfficePage implements OnInit {
         }
     }
 
- // Fra forelesning slide nr 9 - side 15
+    // Fra forelesning slide nr 9 - side 15
     async uploadPicToFireStore() {
         if (this.cameraPreview) {
             const fileName = `office-${uuid()}.png`;
